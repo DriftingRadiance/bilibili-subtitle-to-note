@@ -14,7 +14,7 @@ B 站视频 AI 字幕 → Obsidian Markdown 知识笔记，一键转换。
 
 ### 前置条件
 
-- [Obsidian](https://obsidian.md) + [Claude Code](https://claude.ai) + [Claudian - Obsidian插件]([YishenTu/claudian: An Obsidian plugin that embeds Claude Code/Codex as an AI collaborator in your vault](https://github.com/yishentu/claudian))
+- [Obsidian](https://obsidian.md) + [Claude Code](https://claude.ai) + [Claudian - Obsidian 插件](https://github.com/yishentu/claudian)
 - Python 3 + `pip install requests qrcode[pil]`
 
 ### 安装步骤
