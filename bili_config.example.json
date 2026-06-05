@@ -1,5 +1,6 @@
 {
   "_comment": "BiliBili Subtitle → Note 配置文件。由 /set-bilibili-subtitle-to-note 自动生成。",
+  "_comment_scratch": "{scratch} 由 /setup-matt-pocock-skills 定义。未运行该 skill 时默认 Claudian/scratch。",
   "_comment_auth": "auth_method 可选: qrcode (App扫码) | cookie (浏览器导出) | console (浏览器Console)",
   "auth_method": "qrcode",
   "cookie_path": "{scratch}/bilibili-subtitleToNote/bili_cookies.json",

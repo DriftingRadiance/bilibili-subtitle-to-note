@@ -12,16 +12,21 @@ description: Configure BiliBili subtitle extraction settings. Use when user want
 - Python 3 安装，`pip install requests`
 - (Cookie 路径) EditThisCookie Chrome 扩展
 - (Console 路径) 浏览器能打开 B 站
+- **`{scratch}` 路径变量**：由 `/setup-matt-pocock-skills` 定义，默认为 `Claudian/scratch`。未运行该 skill 时使用默认值。
 
 ## 流程
 
-### Step 1: 解析 scratch 目录
+### Step 0: 解析 `{scratch}` 路径
 
-检查 scratch 路径配置优先级：
+检测 `{scratch}` 是否已定义：
+1. 已定义（已运行 `/setup-matt-pocock-skills`）→ 直接使用
+2. 未定义 → 默认 `Claudian/scratch`
 
-1. 已有 scratch 路径配置 → 直接用 `{scratch}/bilibili-subtitleToNote/`
-2. 未配置 → 询问用户："请输入 scratch 目录路径（默认 `Claudian/scratch/bilibili-subtitleToNote/`）"
-3. 用户指定 → 用用户给的
+### Step 1: 解析 scratch 子目录
+
+完整路径：`{scratch}/bilibili-subtitleToNote/`
+
+若用户想自定义 scratch 位置 → 询问："请输入 scratch 目录路径（默认 `Claudian/scratch/bilibili-subtitleToNote/`）"
 
 ### Step 2: 确保目录存在
 

@@ -11,8 +11,15 @@ B 站视频 AI 字幕 → Obsidian Markdown 知识笔记。
 
 - 必须先运行 `/set-bilibili-subtitle-to-note` 完成配置
 - 若未配置：提示用户先运行设置 skill
+- **`{scratch}` 路径变量**：由 `/setup-matt-pocock-skills` 定义，默认为 `Claudian/scratch`。未运行该 skill 时使用默认值。
 
 ## 流程
+
+### Step 0: 解析 `{scratch}` 路径
+
+检测 `{scratch}` 是否已定义：
+1. 已定义 → 直接使用
+2. 未定义（未运行 `/setup-matt-pocock-skills`）→ 默认 `Claudian/scratch`
 
 ### Step 1: 读取配置
 

@@ -1,4 +1,4 @@
-# Bilibili Subtitle → Obsidian Note
+# Skill : Bilibili Subtitle → Obsidian Note
 
 B 站视频 AI 字幕 → Obsidian Markdown 知识笔记，一键转换。
 
@@ -16,18 +16,26 @@ B 站视频 AI 字幕 → Obsidian Markdown 知识笔记，一键转换。
 
 - [Obsidian](https://obsidian.md) + [Claude Code](https://claude.ai) + [Claudian - Obsidian 插件](https://github.com/yishentu/claudian)
 - Python 3 + `pip install requests qrcode[pil]`
+- `/setup-matt-pocock-skills` （来源于 [mattpocock/skills](https://github.com/mattpocock/skills) ）：该 skill 定义了 bilibili 技能使用的 `{scratch}` 路径变量。如未运行，技能将默认使用 `Claudian/scratch` 作为 scratch 目录。
 
 ### 安装步骤
 
 ```bash
+# 0. (可选但推荐) 运行 /setup-matt-pocock-skills 以定义 {scratch}
+#    如未运行，{scratch} 默认为 Claudian/scratch
+
 # 1. 复制 skill 文件到 Claude Code skills 目录
 cp -r skills/* .claude/skills/
 
 # 2. 复制脚本和提示词到 scratch 目录
-mkdir -p Claudian/scratch/bilibili-subtitleToNote/
-cp scripts/* Claudian/scratch/bilibili-subtitleToNote/
-cp prompts/* Claudian/scratch/bilibili-subtitleToNote/
+#    将 {scratch} 替换为 /setup-matt-pocock-skills 定义的路径，
+#    或使用默认值: Claudian/scratch
+mkdir -p {scratch}/bilibili-subtitleToNote/
+cp scripts/* {scratch}/bilibili-subtitleToNote/
+cp prompts/* {scratch}/bilibili-subtitleToNote/
 ```
+
+> **关于 `{scratch}`**：此占位符由 skill 在运行时解析。若已运行 `/setup-matt-pocock-skills`，使用配置的 scratch 路径；否则默认使用 `Claudian/scratch`。配置文件 `bili_config.json` 及所有脚本均存放于 `{scratch}/bilibili-subtitleToNote/` 下。
 
 ### 初始化配置
 
@@ -45,12 +53,12 @@ cp prompts/* Claudian/scratch/bilibili-subtitleToNote/
 /bilibili-subtitle-to-note <视频URL> <输出目录> [分P] [额外要求]
 ```
 
-| 参数 | 必选 | 说明 |
-|------|------|------|
-| 视频 URL | ✅ | B 站视频页地址或 BV 号 |
-| 输出目录 | ✅ | 笔记输出目录（相对 vault） |
-| 分P | ❌ | `all` / `1,2,3` / `3-5` / `no`（默认仅当前页） |
-| 额外要求 | ❌ | 追加到 LLM prompt（如 "重点突出考试考点"） |
+| 参数     | 必选  | 说明                                     |
+| ------ | --- | -------------------------------------- |
+| 视频 URL | ✅   | B 站视频页地址或 BV 号                         |
+| 输出目录   | ✅   | 笔记输出目录（相对 vault）                       |
+| 分P     | ❌   | `all` / `1,2,3` / `3-5` / `no`（默认仅当前页） |
+| 额外要求   | ❌   | 追加到 LLM prompt（如 "重点突出考试考点"）           |
 
 ### 示例
 
@@ -67,11 +75,11 @@ cp prompts/* Claudian/scratch/bilibili-subtitleToNote/
 
 ## 认证方式
 
-| 方式 | 说明 | 推荐场景 |
-|------|------|----------|
-| QR 码 | App 扫码，两阶段流程 | 日常使用，免手动导出 |
-| Cookie | 从浏览器导出 EditThisCookie JSON | 无手机 |
-| Console | 浏览器 F12 运行 JS，Cookie 不出浏览器 | 隐私优先 |
+| 方式      | 说明                         | 推荐场景       |
+| ------- | -------------------------- | ---------- |
+| QR 码    | App 扫码，两阶段流程               | 日常使用，免手动导出 |
+| Cookie  | 从浏览器导出 EditThisCookie JSON | 无手机        |
+| Console | 浏览器 F12 运行 JS，Cookie 不出浏览器 | 隐私优先       |
 
 ## 文件结构
 

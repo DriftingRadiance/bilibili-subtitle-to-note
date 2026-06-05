@@ -1,6 +1,6 @@
-[中文](README-CN.md) | **English**
+Language: [中文](README-CN.md) | **English**
 
-# Bilibili Subtitle → Obsidian Note
+# Skill: Bilibili Subtitle → Obsidian Note
 
 Bilibili video AI subtitles → Obsidian Markdown knowledge notes, one-click conversion.
 
@@ -18,18 +18,26 @@ Bilibili video AI subtitles → Obsidian Markdown knowledge notes, one-click con
 
 - [Obsidian](https://obsidian.md) + [Claude Code](https://claude.ai) + [Claudian - Obsidian Plugin](https://github.com/yishentu/claudian)
 - Python 3 + `pip install requests qrcode[pil]`
+- `/setup-matt-pocock-skills` (from [mattpocock/skills](https://github.com/mattpocock/skills) ): This skill defines the `{scratch}` path variable used by the bilibili skills. Without it, the skills fall back to `Claudian/scratch` as the default scratch directory.
 
 ### Setup Steps
 
 ```bash
+# 0. (Optional but recommended) Run /setup-matt-pocock-skills to define {scratch}
+#    Without this, {scratch} defaults to Claudian/scratch
+
 # 1. Copy skill files to Claude Code skills directory
 cp -r skills/* .claude/skills/
 
 # 2. Copy scripts and prompts to scratch directory
-mkdir -p Claudian/scratch/bilibili-subtitleToNote/
-cp scripts/* Claudian/scratch/bilibili-subtitleToNote/
-cp prompts/* Claudian/scratch/bilibili-subtitleToNote/
+#    Replace {scratch} with the path defined by /setup-matt-pocock-skills,
+#    or use the default: Claudian/scratch
+mkdir -p {scratch}/bilibili-subtitleToNote/
+cp scripts/* {scratch}/bilibili-subtitleToNote/
+cp prompts/* {scratch}/bilibili-subtitleToNote/
 ```
+
+> **About `{scratch}`**: This placeholder is resolved at runtime by the skills. If you have run `/setup-matt-pocock-skills`, it uses the configured scratch path. Otherwise, it defaults to `Claudian/scratch`. The config file `bili_config.json` and all scripts live under `{scratch}/bilibili-subtitleToNote/`.
 
 ### Initial Configuration
 
