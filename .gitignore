@@ -1,0 +1,25 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+dist/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+
+# Obsidian / Space
+.space/
+.obsidian/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# BiliBili runtime artifacts
+bili_qr.png
+bili_qr_state.json
+bili_cookies.json
+bili_config.json
+bilibili_SubtitlesOutput/
